@@ -1,18 +1,23 @@
 import './App.scss';
+import React, { useState } from "react";
 import Button from './Button.js'
 
 function App() {
+  const [oldValue, setOldValue] = useState(null);
+  const [newValue, setNewValue] = useState("0");
 
   const handleCalculation = (buttonValue) => {
     console.log(buttonValue)
+    setNewValue(String(buttonValue));
   }
   return (
     <div className="calculator">
       <div className="calculator__display">
-
+        <div className="calculator__result_previous">{oldValue}</div>
+        <div className="calculator__result_new">{newValue}</div>
       </div>
       <div className="calculator__buttons">
-        
+
         <Button className="button --top" buttonValue="AC" onClick={handleCalculation} />
         <Button className="button --top" buttonValue="+/-" onClick={handleCalculation} />
         <Button className="button --top" buttonValue="%" onClick={handleCalculation} />
@@ -29,7 +34,7 @@ function App() {
         <Button className="button --number --zero" buttonValue="0" onClick={handleCalculation} />
         <Button className="button --number --decimal" buttonValue="." onClick={handleCalculation} />
 
-        <Button className="button --right" buttonValue=":" onClick={handleCalculation} />
+        <Button className="button --right" buttonValue="/" onClick={handleCalculation} />
         <Button className="button --right" buttonValue="*" onClick={handleCalculation} />
         <Button className="button --right" buttonValue="-" onClick={handleCalculation} />
         <Button className="button --right" buttonValue="+" onClick={handleCalculation} />
