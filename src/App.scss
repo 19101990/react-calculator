@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.calculator {
+    width: 370px;
+}
+
+.calculator__display {
+    min-height: 100px;
+    border: 1px solid  rgb(187, 187, 187);
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.calculator__buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "ac plus_minus percent division"
+                        "seven eight nine multiplication"
+                        "four five six subtraction"
+                        "one two three addition"
+                        "zero zero dec equal";
+    .button {
+        &[data-value='AC'] { grid-area: ac;}
+        &[data-value='+/-'] {grid-area: plus_minus;}
+        &[data-value='%'] {grid-area: percent;}
+        &[data-value='1'] {grid-area: one;}
+        &[data-value='2'] {grid-area: two;}
+        &[data-value='3'] {grid-area: three;}
+        &[data-value='4'] {grid-area: four;}
+        &[data-value='5'] {grid-area: five;}
+        &[data-value='6'] {grid-area: six;}
+        &[data-value='7'] {grid-area: seven;}
+        &[data-value='8'] {grid-area: eight;}
+        &[data-value='9'] {grid-area: nine;}
+        &[data-value='0'] {grid-area: zero;}
+        &[data-value='.'] {grid-area: dec;}
+        &[data-value=':'] {grid-area: division;}
+        &[data-value='*'] {grid-area: multiplication;}
+        &[data-value='-'] {grid-area: subtraction;}
+        &[data-value='+'] {grid-area: addition;}
+        &[data-value='='] {grid-area: equal;}
+    }
+
+    .button {
+        border: 1px solid #fff;
+        border-radius: 5px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        cursor: pointer;
+        &.--top {
+            background: rgb(187, 187, 187);
+            color: #fff;
+            @media(min-width: 979px) {
+                transition: all 0.2s;
+                &:hover {
+                    background: rgb(146, 146, 146);
+                }
+            }
+        }
+        &.--right {
+            background: rgb(255, 115, 0);
+            color: #fff;
+            @media(min-width: 979px) {
+                transition: all 0.2s;
+                &:hover {
+                    background: rgb(221, 100, 0);
+                }
+            }
+        }
+        &.--number {
+            background: rgb(99, 99, 99);
+            color: #fff;
+            @media(min-width: 979px) {
+                transition: all 0.2s;
+                &:hover {
+                    background: rgb(68, 68, 68);
+                }
+            }
+        }
+        
+    }
+}
