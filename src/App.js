@@ -11,26 +11,29 @@ function App() {
     let result;
     switch(operator) {
       case '+':
-        result = parseInt(oldValue) + parseInt(newValue);
-        console.log(result)
+        result = parseFloat(oldValue) + parseFloat(newValue);
         break;
       case '-':
-        result = oldValue - newValue;
-        console.log(result)
+        result = parseFloat(oldValue) - parseFloat(newValue);
         break;
       case '*':
-        result = oldValue * newValue;
-        console.log(result)
+        result = parseFloat(oldValue) * parseFloat(newValue);
         break;
       case '/':
-        result = oldValue / newValue;
-        console.log(result)
+        result = parseFloat(oldValue) / parseFloat(newValue);
         break;
     }
     setNewValue(result);
     setOldValue(null);
     setOperator(null);
   }
+
+  const handleSignChange = () => {
+    let result;
+    result = parseFloat(newValue) * -1;
+    setNewValue(result);
+  }
+
   const handleCalculation = (buttonValue) => {
     if(newValue === "0") {
       switch(buttonValue) {
@@ -89,6 +92,9 @@ function App() {
           setOldValue(newValue);
           setNewValue("0");
           setOperator("+")
+          break;
+        case '+/-':
+          handleSignChange();
           break;
         case '=':
           handleOperations();
